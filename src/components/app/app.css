@@ -1,0 +1,19 @@
+.app{
+  
+  margin: auto;
+  width:500px;
+}
+.app-todo-list_title{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 45px;
+  text-align: center;
+}
+
+.app-todo-list_block{
+  display: flex;
+  justify-content: center;
+
+}
+.app-todo-list_block_checkbox{
+  margin-top: 10px ;
+}

@@ -1,0 +1,14 @@
+.todo-item{
+  max-width:500px;
+  list-style: none;
+  margin-top: 1rem;
+ 
+}
+.todo-item.completed span{
+  text-decoration: line-through;
+}
+.input-group-text{
+  display: flex;
+  justify-content:space-between;
+  
+}
