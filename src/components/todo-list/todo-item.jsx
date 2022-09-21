@@ -4,7 +4,11 @@ import "./todo-item.css";
 const TodoItem = ({ title, index, delElement, completed }) => {
   const [checked, setChecked] = useState(completed);
   const cls = ["todo-item"];
-  if (checked) {
+  
+  // const todos = JSON.parse(localStorage.getItem('todos'))
+  // todos[index].completed = checked
+  // localStorage.setItem('todos', JSON.stringify(todos))
+  if (checked === true) {
     cls.push("completed");
   }
   return (
@@ -18,7 +22,7 @@ const TodoItem = ({ title, index, delElement, completed }) => {
             checked={checked}
             onChange={() => setChecked(!checked)}
           />
-          <span>{title} </span>
+          <span className="todo-title">{title} </span>
 
           <button
             className="btn btn-secondary "

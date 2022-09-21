@@ -1,24 +1,32 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TodoList from "../todo-list/todo-list";
 import "./app.css";
 const App = () => {
   
-  const [todos, setTodos] = useState([
-    { title: "First todos", completed: false },
-    { title: "Second todos", completed: false },
-  ]);
-  
+  const defaultTodos = JSON.parse(localStorage.getItem('todos'))
   const [todoTitle, setTitle] = useState("");
+  const [todos, setTodos] = useState(defaultTodos || []);
+
+ 
+  useEffect(()=>{
+    localStorage.setItem('todos', JSON.stringify(todos))
+  }, [todos])
+
+  useEffect(()=>{
+    const raw = localStorage.getItem('todos') || JSON.stringify([])
+    setTodos(JSON.parse(raw))
+  },[])
 
   function handleKeyPress(event) {
-    if (event.key === "Enter" ) {
+    if (todoTitle && event.key === "Enter" ) {
       addTodo()
     }
   }
 
   function handleClick() {
-    addTodo()
+    if(todoTitle){
+      addTodo()
+    }
   }
 
   function addTodo() {
@@ -31,7 +39,6 @@ const App = () => {
     ])
     setTitle('')
   }
-
   
   function delElement(index){
     const arr = [...todos]
@@ -45,7 +52,7 @@ const App = () => {
         <div className="app-todo-list_title">Todo List</div>
         <div className="app-todo-list_block">
           <input
-            className="form-control text-capitalize"
+            className="form-control"
             type="text"
             placeholder="input text..."
             value={todoTitle}
