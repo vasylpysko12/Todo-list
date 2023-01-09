@@ -5,9 +5,6 @@ const TodoItem = ({ title, index, delElement, completed }) => {
   const [checked, setChecked] = useState(completed);
   const cls = ["todo-item"];
   
-  // const todos = JSON.parse(localStorage.getItem('todos'))
-  // todos[index].completed = checked
-  // localStorage.setItem('todos', JSON.stringify(todos))
   if (checked === true) {
     cls.push("completed");
   }
